@@ -3,7 +3,7 @@ class Person(object):
 		self.name = name
 
 	def reveal_identity(self):
-		print "my name is {}".format(self.name)
+		print ("my name is {}".format(self.name))
 
 class SuperHero(Person):
 
@@ -13,7 +13,7 @@ class SuperHero(Person):
 
 	def reveal_identity(self):
 		super(SuperHero, self).reveal_identity()
-		print "... And I am {}".format(self.hero_name)
+		print ("... And I am {}".format(self.hero_name))
 
 
 michael = Person("Michael")
