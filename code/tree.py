@@ -1,25 +1,50 @@
-def preorder(tree):
-    if tree:
-        print(tree.getRootVal())
-        preorder(tree.getLeftChild())
-        preorder(tree.getRightChild())
+class Node:
 
-def preorder(self):
-    print(self.key)
-    if self.leftChild:
-        self.leftChild.preorder()
-    if self.rightChild:
-        self.rightChild.preorder()
+    def __init__(self, data):
 
-def postorder(tree):
-    if tree != None:
-        postorder(tree.getLeftChild())
-        postorder(tree.getRightChild())
-        print(tree.getRootVal())
+        self.left = None
+        self.right = None
+        self.data = data
+# Insert Node
+    def insert(self, data):
 
-def inorder(tree):
-  if tree != None:
-      inorder(tree.getLeftChild())
-      print(tree.getRootVal())
-      inorder(tree.getRightChild())
+        if self.data:
+            if data < self.data:
+                if self.left is None:
+                    self.left = Node(data)
+                else:
+                    self.left.insert(data)
+            elif data > self.data:
+                if self.right is None:
+                    self.right = Node(data)
+                else:
+                    self.right.insert(data)
+        else:
+            self.data = data
 
+# Print the Tree
+    def PrintTree(self):
+        if self.left:
+            self.left.PrintTree()
+        print( self.data),
+        if self.right:
+            self.right.PrintTree()
+
+# Inorder traversal
+# Left -> Root -> Right
+    def inorderTraversal(self, root):
+        res = []
+        if root:
+            res = self.inorderTraversal(root.left)
+            res.append(root.data)
+            res = res + self.inorderTraversal(root.right)
+        return res
+
+root = Node(27)
+root.insert(14)
+root.insert(35)
+root.insert(10)
+root.insert(19)
+root.insert(31)
+root.insert(42)
+print(root.inorderTraversal(root))
