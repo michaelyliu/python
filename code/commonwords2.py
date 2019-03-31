@@ -7,6 +7,8 @@ data_set = """Welcome to the world of Geeks
 "here is your chance You can write article and mail your article 
 " to contribute at geeksforgeeks org See your article appearing on  
 "the Geeks for Geeks main page and help thousands of other Geeks. """ 
+
+banded_words = {"Geeks", "to"}
   
 # split() returns list of all the words in the string 
 split_it = data_set.split() 
@@ -17,6 +19,13 @@ Counter = Counter(split_it)
 # most_common() produces k frequently encountered 
 # input values and their respective counts. 
 most_occur = Counter.most_common(4) 
+
+for i in most_occur.keys():
+	print (i)
+	if i in banded_words:
+		print (i)
+		most_occur.pop(most_occur[i])
+
   
 print(most_occur) 
 
